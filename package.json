@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/index.js"
+    "start": "CI= node ./bin/index.js",
+    "dev": "nodemon ./bin/index.js",
+    "build": "yarn tsc"
   },
   "keywords": [],
   "author": "",
