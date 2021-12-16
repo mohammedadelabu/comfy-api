@@ -2,7 +2,6 @@
   "name": "e-commerce",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "CI= node ./bin/index.js",
     "dev": "nodemon ./bin/index.js",
