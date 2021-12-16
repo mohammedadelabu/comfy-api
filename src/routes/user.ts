@@ -6,6 +6,7 @@ const {
 } = require("./verifyToken");
 import { User } from './interface'
 import { env } from 'process';
+import { ok } from 'assert';
 
 
 const router = require("express").Router();
@@ -91,6 +92,12 @@ router.get("/stats", verifyTokenAndAdmin, async (req: any, res: any) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// TESTING THE SERVER
+router.get('/', (req: any, res: any, next: any) => {
+  // res.render('index', { title: 'Express' });
+  res.status(200).send({status:ok,response: 'api is working'})
 });
 
 module.exports = router;
