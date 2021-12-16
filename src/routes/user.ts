@@ -13,11 +13,10 @@ const router = require("express").Router();
 
 // UPDATE
 router.put("/:id", verifyTokenAndAuthorization, async (req: any, res: any) => {
-  let process: any = "process.env.PASS_SEC"
   if (req.body.password) {
     req.body.password = CryptoJS.AES.encrypt(
-      req.body.password, process
-      //made a change...> process.env.PASS_SEC is replaced with process
+      req.body.password, 
+      `${process.env.PASS_SEC}`
     ).toString();
   }
 
