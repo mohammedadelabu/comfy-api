@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res)=>{
-    res.send({status:ok,response:'The Comfy-Store Api is working'})
+    res.send({status:'ok',response:'The Comfy-Store Api is working'})
 })
 
 app.use('/api/auth', authRoute);
