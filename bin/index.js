@@ -1,4 +1,5 @@
 "use strict";
+const path = require ('path');
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -8,6 +9,7 @@ const authRoute = require('../dist/routes/auth');
 const productRoute = require('../dist/routes/product');
 const orderRoute = require('../dist/routes/order');
 const cartRoute = require('../dist/routes/cart');
+const indexRouter = require('../dist/routes/index');
 const cors = require("cors");
 const stripeRoute = require('../dist/routes/stripe');
 dotenv.config();
@@ -20,11 +22,11 @@ mongoose
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res)=>{
-    res.send({status:'ok',response:'The Comfy-Store Api is working'})
-})
+app.set('views', path.join(`${__dirname}/../`, 'views'));
+app.set('view engine', 'ejs');
 
 app.use('/api/auth', authRoute);
+app.use('/', indexRouter);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
